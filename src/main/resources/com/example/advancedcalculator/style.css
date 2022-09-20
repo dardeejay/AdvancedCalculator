@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+.root{
+    -fx-background-color: #22252D;
+}
+
+Button{
+    -fx-background-color: #272B33;
+    -fx-text-fill: #26EAC8;
+    -fx-font-family: 'Roboto';
+    -fx-font-weight: 700;
+    -fx-background-radius: 10;
+    -fx-border-color: #22252D;
+    -fx-border-radius: 10;
+    -fx-font-size: 13px;
+}
+
+.buttons_container{
+    -fx-background-color: #292D36;
+    -fx-background-radius: 20 20 0 0;
+}
+
+.currentOperand{
+    -fx-text-fill: #FDFDFD;
+    -fx-font-family: 'Roboto', sans-serif;
+    -fx-font-weight: 700;
+    -fx-background-radius: 30;
+}
+
+.prevOperand{
+    -fx-text-fill: #F3F3F4;
+    -fx-font-family: 'Roboto', sans-serif;
+    -fx-font-weight: 700;
+}
