@@ -5,6 +5,6 @@ module com.example.advancedcalculator {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
 
-    opens com.example.advancedcalculator to javafx.fxml;
-    exports com.example.advancedcalculator;
+    opens com.act2a.advancedcalculator to javafx.fxml;
+    exports com.act2a.advancedcalculator;
 }
