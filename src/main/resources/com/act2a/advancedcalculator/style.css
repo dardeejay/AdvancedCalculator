@@ -17,6 +17,16 @@ Button{
     -fx-border-radius: 10;
     -fx-font-size: 13px;
 }
+Button:hover{
+    -fx-background-color: #D6E3D6;
+    -fx-text-fill: black;
+    -fx-font-family: 'Roboto';
+    -fx-font-weight: 700;
+    -fx-background-radius: 10;
+    -fx-border-color: #22252D;
+    -fx-border-radius: 10;
+    -fx-font-size: 13px;
+}
 .ResultsPane{
     -fx-background-color: #D6E3D6;
     -fx-background-radius: 10;

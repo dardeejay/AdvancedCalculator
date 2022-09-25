@@ -73,6 +73,8 @@ public class CalculatorController {
     private Button PI;
     @FXML
     private Button EBTN;
+    @FXML
+    private Button FACTORIAL;
 
     private String currentOperandText = "";
     private float operand1 = 0 ;
@@ -81,7 +83,12 @@ public class CalculatorController {
     private boolean isPointEmpty = true;
     private boolean disableOperator = false;
     private String Function;
-
+    private float factorial(float n){
+        if(n <= 1){
+            return 1;
+        }
+        return n * factorial(n-1);
+    }
     @FXML
     protected void operandButton(ActionEvent event){
 
@@ -131,6 +138,14 @@ public class CalculatorController {
                 currentOperand.setText(currentOperandText);
                 isPointEmpty = !isPointEmpty;
             }
+        }
+        else if(event.getSource() == PI){
+            currentOperandText += Math.PI;
+            currentOperand.setText(currentOperandText);
+        }
+        else if(event.getSource() == EBTN){
+            currentOperandText += Math.E;
+            currentOperand.setText(currentOperandText);
         }
     }
     @FXML
@@ -247,6 +262,16 @@ public class CalculatorController {
                 currentOperandText += "sin(";
                 currentOperand.setText(currentOperandText);
                 Function = "SIN";
+            }
+        }
+        else if(event.getSource() == FACTORIAL){
+            if(!disableOperator){
+                if(!currentOperandText.equals("")){
+                    disableOperator = !disableOperator;
+                    currentOperandText += "!";
+                    currentOperand.setText(currentOperandText);
+                    Function = "FACTORIAL";
+                }
             }
         }
     }
@@ -540,6 +565,15 @@ public class CalculatorController {
                     prevOperand.setText(currentOperandText+")");
                     currentOperandText = "";
                     currentOperandText = Float.toString((float) Math.sin(num1));
+                    currentOperand.setText(currentOperandText);
+                    Function = "";
+                    disableOperator = !disableOperator;
+                }
+                else if(Function.equalsIgnoreCase("FACTORIAL")){
+                    float num1 = Float.parseFloat(currentOperandText.substring(0, currentOperandText.length()-1));
+                    prevOperand.setText(currentOperandText);
+                    currentOperandText = "";
+                    currentOperandText = Float.toString(factorial(num1));
                     currentOperand.setText(currentOperandText);
                     Function = "";
                     disableOperator = !disableOperator;

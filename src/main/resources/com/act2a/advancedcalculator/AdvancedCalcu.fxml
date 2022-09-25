@@ -10,14 +10,14 @@
 
 <Pane id="root" prefHeight="618.0" prefWidth="329" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.act2a.advancedcalculator.CalculatorController">
    <children>
-      <Pane layoutY="9.0" prefHeight="105.0" prefWidth="329.0" styleClass="ResultsPane">
+      <Pane layoutX="6.0" layoutY="9.0" prefHeight="105.0" prefWidth="317.0" styleClass="ResultsPane">
          <children>
-            <Label fx:id="currentOperand" alignment="CENTER_RIGHT" layoutX="3.0" layoutY="35.0" prefHeight="70.0" prefWidth="323.0" styleClass="currentOperand" textAlignment="RIGHT" textOverrun="CLIP" wrapText="true">
+            <Label fx:id="currentOperand" alignment="CENTER_RIGHT" layoutX="3.0" layoutY="35.0" prefHeight="71.0" prefWidth="317.0" styleClass="currentOperand" textAlignment="RIGHT" textOverrun="CLIP" wrapText="true">
                <font>
                   <Font size="45.0" />
                </font>
             </Label>
-            <Label fx:id="prevOperand" alignment="CENTER_RIGHT" prefHeight="43.0" prefWidth="329.0" styleClass="prevOperand">
+            <Label fx:id="prevOperand" alignment="CENTER_RIGHT" prefHeight="43.0" prefWidth="317.0" styleClass="prevOperand">
                <font>
                   <Font size="33.0" />
                </font>
@@ -153,7 +153,7 @@
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                   <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="72.0" text="N!" GridPane.rowIndex="7">
+                   <Button fx:id="FACTORIAL" mnemonicParsing="false" onAction="#functButtons" prefHeight="63.0" prefWidth="72.0" text="N!" GridPane.rowIndex="7">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -163,7 +163,7 @@
                   <Button fx:id="SIN" mnemonicParsing="false" onAction="#functButtons" prefHeight="113.0" prefWidth="263.0" text="sin" GridPane.columnIndex="3" GridPane.rowIndex="7" />
                   <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="109.0" text="Σ" GridPane.rowIndex="8" />
                   <Button fx:id="PI" mnemonicParsing="false" onAction="#operandButton" prefHeight="126.0" prefWidth="211.0" text="π" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                  <Button fx:id="EBTN" mnemonicParsing="false" onAction="#operandButton" prefHeight="90.0" prefWidth="143.0" text="e" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                  <Button fx:id="EBTN" mnemonicParsing="false" prefHeight="90.0" prefWidth="143.0" text="e" GridPane.columnIndex="2" GridPane.rowIndex="8" />
                   <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="165.0" text="Π" GridPane.columnIndex="3" GridPane.rowIndex="8" />
                </children>
            </GridPane>
