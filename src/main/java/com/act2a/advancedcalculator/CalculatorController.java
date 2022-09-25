@@ -51,14 +51,37 @@ public class CalculatorController {
     private Button FLOOR;
     @FXML
     private  Button CEIL;
+    @FXML
+    private Button SQR;
+    @FXML
+    private Button POW;
+    @FXML
+    private Button SQRT;
+    @FXML
+    private Button CBRT;
+    @FXML
+    private Button LOGX;
+    @FXML
+    private Button LOG2X;
+    @FXML
+    private Button COS;
+    @FXML
+    private Button TAN;
+    @FXML
+    private Button SIN;
+    @FXML
+    private Button PI;
+    @FXML
+    private Button EBTN;
 
     private String currentOperandText = "";
     private float operand1 = 0 ;
     private float operand2;
-    private String operator;
+    private String operator = "";
     private boolean isPointEmpty = true;
-    private boolean isFloorCeil = false;
+    private boolean disableOperator = false;
     private String Function;
+
     @FXML
     protected void operandButton(ActionEvent event){
 
@@ -120,7 +143,7 @@ public class CalculatorController {
             operand1 = 0;
             operand2 = 0;
             Function ="";
-            isFloorCeil = false;
+            disableOperator = false;
             isPointEmpty = true;
         }
         else if(event.getSource() == DEL){
@@ -136,18 +159,15 @@ public class CalculatorController {
             if(currentOperandText.length()<1){
                 currentOperandText ="";
                 currentOperand.setText(currentOperandText);
-                prevOperand.setText(currentOperandText);
-                operator ="";
-                operand1 = 0;
-                operand2 = 0;
                 Function ="";
-                isFloorCeil = false;
+                disableOperator = false;
                 isPointEmpty = true;
             }
         }
+
         else if(event.getSource() == FLOOR){
             if(currentOperandText.equals("")){
-                isFloorCeil = !isFloorCeil;
+                disableOperator = !disableOperator;
                 currentOperandText += "Floor(";
                 currentOperand.setText(currentOperandText);
                 Function = "FLOOR";
@@ -155,135 +175,279 @@ public class CalculatorController {
         }
         else if(event.getSource() == CEIL){
             if(currentOperandText.equals("")){
-                isFloorCeil = !isFloorCeil;
+                disableOperator = !disableOperator;
                 currentOperandText += "Ceil(";
                 currentOperand.setText(currentOperandText);
                 Function = "CEIL";
             }
         }
+        else if(event.getSource() == SQR){
+            if(!disableOperator){
+                if(!currentOperandText.equals("")){
+                    operand1 = Float.parseFloat(currentOperandText);
+                    currentOperandText += "^2";
+                    currentOperand.setText(currentOperandText);
+                    operand2 = 2;
+                    disableOperator = !disableOperator;
+                    Function = "SQR";
+                }
+            }
+        }
+        else if(event.getSource() == SQRT){
+            if(currentOperandText.equals("")){
+                disableOperator = !disableOperator;
+                currentOperandText += "√";
+                currentOperand.setText(currentOperandText);
+                Function = "SQRT";
+            }
+        }
+        else if(event.getSource() == CBRT){
+            if(currentOperandText.equals("")){
+                disableOperator = !disableOperator;
+                currentOperandText += "3√";
+                currentOperand.setText(currentOperandText);
+                Function = "CBRT";
+            }
+        }
+        else if(event.getSource() == LOGX){
+            if(currentOperandText.equals("")){
+                disableOperator = !disableOperator;
+                currentOperandText += "log(";
+                currentOperand.setText(currentOperandText);
+                Function = "LOGX";
+            }
+        }
+        else if(event.getSource() == LOG2X){
+            if(currentOperandText.equals("")){
+                disableOperator = !disableOperator;
+                currentOperandText += "log2(";
+                currentOperand.setText(currentOperandText);
+                Function = "LOG2X";
+            }
+        }
+        else if(event.getSource() == COS){
+            if(currentOperandText.equals("")){
+                disableOperator = !disableOperator;
+                currentOperandText += "cos(";
+                currentOperand.setText(currentOperandText);
+                Function = "COS";
+            }
+        }
+        else if(event.getSource() == TAN){
+            if(currentOperandText.equals("")){
+                disableOperator = !disableOperator;
+                currentOperandText += "tan(";
+                currentOperand.setText(currentOperandText);
+                Function = "TAN";
+            }
+        }
+        else if(event.getSource() == SIN){
+            if(currentOperandText.equals("")){
+                disableOperator = !disableOperator;
+                currentOperandText += "sin(";
+                currentOperand.setText(currentOperandText);
+                Function = "SIN";
+            }
+        }
     }
     @FXML
     protected void operatorButtons(ActionEvent event){
-        if(!isFloorCeil){
+        if(!disableOperator){
             if(event.getSource() == ADD){
-                operand1 = Float.parseFloat(currentOperandText);
-                currentOperandText += "+";
-                prevOperand.setText(currentOperandText);
-                currentOperandText = "";
-                currentOperand.setText(currentOperandText);
-                operator = "+";
-                if(!isPointEmpty){
-                    isPointEmpty = true;
+                if(operator.equals("")){
+                    operand1 = Float.parseFloat(currentOperandText);
+                    currentOperandText += "+";
+                    prevOperand.setText(currentOperandText);
+                    currentOperandText = "";
+                    currentOperand.setText(currentOperandText);
+                    operator = "+";
+                    if(!isPointEmpty){
+                        isPointEmpty = true;
+                    }
                 }
+                else{
+                    operator ="+";
+                    prevOperand.setText((prevOperand.getText().substring(0, prevOperand.getText().length()-1))+operator);
+                }
+
             }
             else if(event.getSource() == MINUS){
-                operand1 = Float.parseFloat(currentOperandText);
-                currentOperandText += "-";
-                prevOperand.setText(currentOperandText);
-                currentOperandText = "";
-                currentOperand.setText(currentOperandText);
-                operator = "-";
-                if(!isPointEmpty){
-                    isPointEmpty = true;
+                if(operator.equals("")){
+                    operand1 = Float.parseFloat(currentOperandText);
+                    currentOperandText += "-";
+                    prevOperand.setText(currentOperandText);
+                    currentOperandText = "";
+                    currentOperand.setText(currentOperandText);
+                    operator = "-";
+                    if(!isPointEmpty){
+                        isPointEmpty = true;
+                    }
+                }else{
+                    operator ="-";
+                    prevOperand.setText((prevOperand.getText().substring(0, prevOperand.getText().length()-1))+operator);
                 }
             }
             else if(event.getSource() == MULTIPLY){
-                operand1 = Float.parseFloat(currentOperandText);
-                currentOperandText += "*";
-                prevOperand.setText(currentOperandText);
-                currentOperandText = "";
-                currentOperand.setText(currentOperandText);
-                operator = "*";
-                if(!isPointEmpty){
-                    isPointEmpty = true;
-                }
+               if(operator.equals("")){
+                   operand1 = Float.parseFloat(currentOperandText);
+                   currentOperandText += "*";
+                   prevOperand.setText(currentOperandText);
+                   currentOperandText = "";
+                   currentOperand.setText(currentOperandText);
+                   operator = "*";
+                   if(!isPointEmpty){
+                       isPointEmpty = true;
+                   }
+               }else{
+                   operator ="*";
+                   prevOperand.setText((prevOperand.getText().substring(0, prevOperand.getText().length()-1))+operator);
+               }
             }
             else if(event.getSource() == DIVIDE){
-                operand1 = Float.parseFloat(currentOperandText);
-                currentOperandText += "/";
-                prevOperand.setText(currentOperandText);
-                currentOperandText = "";
-                currentOperand.setText(currentOperandText);
-                operator = "/";
-                if(!isPointEmpty){
-                    isPointEmpty = true;
+                if(operator.equals("")){
+                    operand1 = Float.parseFloat(currentOperandText);
+                    currentOperandText += "/";
+                    prevOperand.setText(currentOperandText);
+                    currentOperandText = "";
+                    currentOperand.setText(currentOperandText);
+                    operator = "/";
+                    if(!isPointEmpty){
+                        isPointEmpty = true;
+                    }
+                }else{
+                    operator ="/";
+                    prevOperand.setText((prevOperand.getText().substring(0, prevOperand.getText().length()-1))+operator);
                 }
             }
             else if(event.getSource() == MODULO){
-                operand1 = Float.parseFloat(currentOperandText);
-                currentOperandText += "%";
-                prevOperand.setText(currentOperandText);
-                currentOperandText = "";
-                currentOperand.setText(currentOperandText);
-                operator = "%";
-                if(!isPointEmpty){
-                    isPointEmpty = true;
+                if(operator.equals("")){
+                    operand1 = Float.parseFloat(currentOperandText);
+                    currentOperandText += "%";
+                    prevOperand.setText(currentOperandText);
+                    currentOperandText = "";
+                    currentOperand.setText(currentOperandText);
+                    operator = "%";
+                    if(!isPointEmpty){
+                        isPointEmpty = true;
+                    }
+                }else{
+                    operator ="%";
+                    prevOperand.setText((prevOperand.getText().substring(0, prevOperand.getText().length()-1))+operator);
+
+                }
+            }
+            else if(event.getSource() == POW){
+                if(operator.equals("")){
+                    operand1 = Float.parseFloat(currentOperandText);
+                    currentOperandText += "^";
+                    prevOperand.setText(currentOperandText);
+                    currentOperandText = "";
+                    currentOperand.setText(currentOperandText);
+                    operator = "^";
+                    if(!isPointEmpty){
+                        isPointEmpty = true;
+                    }
+                }else{
+                    operator ="^";
+                    prevOperand.setText((prevOperand.getText().substring(0, prevOperand.getText().length()-1))+operator);
+
                 }
             }
         }
         if(event.getSource() == EQUALS){
-            if(!isFloorCeil){
+
+            if(!disableOperator){
                 if(operator.equals("")){
                     currentOperand.setText(currentOperandText);
                 }
                 switch (operator) {
                     case "+":
                         if (currentOperandText.equals("")) {
-                            currentOperand.setText(Float.toString(operand1));
+                            currentOperandText = Float.toString(operand1);
+                            currentOperand.setText(currentOperandText);
                             operand1 = 0;
+                            operator = "";
                             prevOperand.setText("");
                         } else {
                             operand2 = Float.parseFloat(currentOperandText);
                             currentOperandText = Float.toString(operand1 + operand2);
                             currentOperand.setText(currentOperandText);
+                            operator = "";
                             prevOperand.setText("");
                         }
                         break;
                     case "-":
                         if (currentOperandText.equals("")) {
-                            currentOperand.setText(Float.toString(operand1));
+                            currentOperandText = Float.toString(operand1);
+                            currentOperand.setText(currentOperandText);
                             operand1 = 0;
+                            operator = "";
                             prevOperand.setText("");
                         } else {
                             operand2 = Float.parseFloat(currentOperandText);
                             currentOperandText = Float.toString(operand1 - operand2);
                             currentOperand.setText(currentOperandText);
+                            operator = "";
                             prevOperand.setText("");
                         }
                         break;
                     case "*":
                         if (currentOperandText.equals("")) {
-                            currentOperand.setText(Float.toString(operand1));
+                            currentOperandText = Float.toString(operand1);
+                            currentOperand.setText(currentOperandText);
                             operand1 = 0;
+                            operator = "";
                             prevOperand.setText("");
                         } else {
                             operand2 = Float.parseFloat(currentOperandText);
                             currentOperandText = Float.toString(operand1 * operand2);
                             currentOperand.setText(currentOperandText);
+                            operator = "";
                             prevOperand.setText("");
                         }
                         break;
                     case "/":
                         if (currentOperandText.equals("")) {
-                            currentOperand.setText(Float.toString(operand1));
+                            currentOperandText = Float.toString(operand1);
+                            currentOperand.setText(currentOperandText);
                             operand1 = 0;
+                            operator = "";
                             prevOperand.setText("");
                         } else {
                             operand2 = Float.parseFloat(currentOperandText);
                             currentOperandText = Float.toString(operand1 / operand2);
                             currentOperand.setText(currentOperandText);
+                            operator = "";
                             prevOperand.setText("");
                         }
                         break;
                     case "%":
                         if (currentOperandText.equals("")) {
-                            currentOperand.setText(Float.toString(operand1));
+                            currentOperandText = Float.toString(operand1);
+                            currentOperand.setText(currentOperandText);
                             operand1 = 0;
+                            operator = "";
                             prevOperand.setText("");
                         } else {
                             operand2 = Float.parseFloat(currentOperandText);
                             currentOperandText = Float.toString(operand1 % operand2);
                             currentOperand.setText(currentOperandText);
+                            operator = "";
+                            prevOperand.setText("");
+                        }
+                        break;
+                    case "^":
+                        if (currentOperandText.equals("")) {
+                            currentOperandText = Float.toString(operand1);
+                            currentOperand.setText(currentOperandText);
+                            operand1 = 0;
+                            operator = "";
+                            prevOperand.setText("");
+                        } else {
+                            operand2 = Float.parseFloat(currentOperandText);
+                            currentOperandText = Float.toString((float) Math.pow(operand1, operand2));
+                            currentOperand.setText(currentOperandText);
+                            operator = "";
                             prevOperand.setText("");
                         }
                         break;
@@ -294,19 +458,91 @@ public class CalculatorController {
             }else{
                 if(Function.equalsIgnoreCase("FLOOR")){
                     float num1 = Float.parseFloat(currentOperandText.substring(6));
+                    prevOperand.setText(currentOperandText+")");
                     currentOperandText = "";
                     currentOperandText = Float.toString((float) Math.floor(num1));
                     currentOperand.setText(currentOperandText);
                     Function = "";
-                    isFloorCeil = !isFloorCeil;
+                    disableOperator = !disableOperator;
                 }
                 else if(Function.equalsIgnoreCase("CEIL")){
                     float num1 = Float.parseFloat(currentOperandText.substring(5));
+                    prevOperand.setText(currentOperandText+")");
                     currentOperandText = "";
                     currentOperandText = Float.toString((float) Math.ceil(num1));
                     currentOperand.setText(currentOperandText);
                     Function = "";
-                    isFloorCeil = !isFloorCeil;
+                    disableOperator = !disableOperator;
+                }
+                else if(Function.equalsIgnoreCase("SQR")){
+                    currentOperandText = "";
+                    currentOperandText = Float.toString((float) Math.pow(operand1, operand2));
+                    currentOperand.setText(currentOperandText);
+                    Function = "";
+                    disableOperator = !disableOperator;
+                }
+                else if(Function.equalsIgnoreCase("SQRT")){
+                    float num1 = Float.parseFloat(currentOperandText.substring(1));
+                    prevOperand.setText(currentOperandText);
+                    currentOperandText = "";
+                    currentOperandText = Float.toString((float) Math.sqrt(num1));
+                    currentOperand.setText(currentOperandText);
+                    Function = "";
+                    disableOperator = !disableOperator;
+                }
+                else if(Function.equalsIgnoreCase("CBRT")){
+                    float num1 = Float.parseFloat(currentOperandText.substring(2));
+                    prevOperand.setText(currentOperandText);
+                    currentOperandText = "";
+                    currentOperandText = Float.toString((float) Math.cbrt(num1));
+                    currentOperand.setText(currentOperandText);
+                    Function = "";
+                    disableOperator = !disableOperator;
+                }
+                else if(Function.equalsIgnoreCase("LOGX")){
+                    float num1 = Float.parseFloat(currentOperandText.substring(4));
+                    prevOperand.setText(currentOperandText+")");
+                    currentOperandText = "";
+                    currentOperandText = Float.toString((float) Math.log(num1));
+                    currentOperand.setText(currentOperandText);
+                    Function = "";
+                    disableOperator = !disableOperator;
+                }
+                else if(Function.equalsIgnoreCase("LOG2X")){
+                    float num1 = Float.parseFloat(currentOperandText.substring(5));
+                    prevOperand.setText(currentOperandText+")");
+                    currentOperandText = "";
+                    currentOperandText = Float.toString((float) (Math.log(num1)/Math.log(2)));
+                    currentOperand.setText(currentOperandText);
+                    Function = "";
+                    disableOperator = !disableOperator;
+                }
+                else if(Function.equalsIgnoreCase("COS")){
+                    float num1 = Float.parseFloat(currentOperandText.substring(4));
+                    prevOperand.setText(currentOperandText+")");
+                    currentOperandText = "";
+                    currentOperandText = Float.toString((float) Math.cos(num1));
+                    currentOperand.setText(currentOperandText);
+                    Function = "";
+                    disableOperator = !disableOperator;
+                }
+                else if(Function.equalsIgnoreCase("TAN")){
+                    float num1 = Float.parseFloat(currentOperandText.substring(4));
+                    prevOperand.setText(currentOperandText+")");
+                    currentOperandText = "";
+                    currentOperandText = Float.toString((float) Math.tan(num1));
+                    currentOperand.setText(currentOperandText);
+                    Function = "";
+                    disableOperator = !disableOperator;
+                }
+                else if(Function.equalsIgnoreCase("SIN")){
+                    float num1 = Float.parseFloat(currentOperandText.substring(4));
+                    prevOperand.setText(currentOperandText+")");
+                    currentOperandText = "";
+                    currentOperandText = Float.toString((float) Math.sin(num1));
+                    currentOperand.setText(currentOperandText);
+                    Function = "";
+                    disableOperator = !disableOperator;
                 }
             }
         }
