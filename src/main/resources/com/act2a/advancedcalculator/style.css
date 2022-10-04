@@ -4,7 +4,12 @@
     src: url("PocketCalculator.otf");
 }
 .root{
-    -fx-background-color: #22252D;
+    -fx-background-color: #100002;
+    -fx-font-weight: bold;
+}
+.functs{
+    -fx-background-color: #F8981F;
+    -fx-text-fill: black;
 }
 
 Button{
@@ -13,9 +18,12 @@ Button{
     -fx-font-family: 'Roboto';
     -fx-font-weight: 700;
     -fx-background-radius: 10;
-    -fx-border-color: #22252D;
     -fx-border-radius: 10;
-    -fx-font-size: 13px;
+    -fx-font-size: 15px;
+}
+.operators{
+    -fx-background-color: #71B1EB;
+    -fx-text-fill: black;
 }
 Button:hover{
     -fx-background-color: #D6E3D6;
@@ -31,11 +39,19 @@ Button:hover{
     -fx-background-color: #D6E3D6;
     -fx-background-radius: 10;
 }
+
 .buttons_container{
-    -fx-background-color: #292D36;
+    -fx-background-color: #100002;
     -fx-background-radius: 20 20 0 0;
 }
+.functG1{
+    -fx-background-color: #CCEDD2;
+    -fx-text-fill: black;
 
+}
+.equals{
+    -fx-font-size: 30px;
+}
 .currentOperand{
     -fx-text-fill: black;
     -fx-font-family: 'Pocket Calculator', sans-serif;

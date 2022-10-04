@@ -75,14 +75,21 @@ public class CalculatorController {
     private Button EBTN;
     @FXML
     private Button FACTORIAL;
+    @FXML
+    private Button SIGMA;
+    @FXML
+    private Button BIGPI;
 
     private String currentOperandText = "";
+    private boolean isSummation = false;
     private float operand1 = 0 ;
     private float operand2;
     private String operator = "";
     private boolean isPointEmpty = true;
     private boolean disableOperator = false;
     private String Function;
+    private int base, limit;
+    private boolean disableOperands = false;
     private float factorial(float n){
         if(n <= 1){
             return 1;
@@ -90,62 +97,104 @@ public class CalculatorController {
         return n * factorial(n-1);
     }
     @FXML
-    protected void operandButton(ActionEvent event){
+    protected void bigFunctButtons(ActionEvent event){
 
-        if(event.getSource() == one){
-            currentOperandText += "1";
-            currentOperand.setText(currentOperandText);
-        }
-        else if (event.getSource() == two){
-            currentOperandText +="2";
-            currentOperand.setText(currentOperandText);
-        }
-        else if (event.getSource() == three){
-            currentOperandText +="3";
-            currentOperand.setText(currentOperandText);
-        }
-        else if (event.getSource() == four){
-            currentOperandText +="4";
-            currentOperand.setText(currentOperandText);
-        }
-        else if (event.getSource() == five){
-            currentOperandText +="5";
-            currentOperand.setText(currentOperandText);
-        }
-        else if (event.getSource() == six){
-            currentOperandText +="6";
-            currentOperand.setText(currentOperandText);
-        }
-        else if (event.getSource() == seven){
-            currentOperandText +="7";
-            currentOperand.setText(currentOperandText);
-        }
-        else if (event.getSource() == eight){
-            currentOperandText +="8";
-            currentOperand.setText(currentOperandText);
-        }
-        else if (event.getSource() == nine){
-            currentOperandText +="9";
-            currentOperand.setText(currentOperandText);
-        }
-        else if(event.getSource() == zero){
-            currentOperandText +="0";
-            currentOperand.setText(currentOperandText);
-        }
-        else if(event.getSource() == point){
-            if(isPointEmpty){
-                currentOperandText +=".";
-                currentOperand.setText(currentOperandText);
-                isPointEmpty = !isPointEmpty;
+        if(event.getSource() == SIGMA){
+            if(currentOperand.getText().equals("")){
+                if(!isSummation){
+                    isSummation = !isSummation;
+                    prevOperand.setText("Σ(base, limit)");
+                    currentOperandText = "base = ";
+                    currentOperand.setText(currentOperandText);
+                    disableOperator = !disableOperator;
+                    Function = "SUMMATION";
+                }
             }
         }
-        else if(event.getSource() == PI){
-            currentOperandText += Math.PI;
-            currentOperand.setText(currentOperandText);
+        else if(event.getSource() == BIGPI){
+            if(currentOperand.getText().equals("")){
+                if(!isSummation){
+                    isSummation = !isSummation;
+                    prevOperand.setText("Π(base, limit)");
+                    currentOperandText = "base = ";
+                    currentOperand.setText(currentOperandText);
+                    disableOperator = !disableOperator;
+                    Function = "BIGPI";
+                }
+            }
         }
-        else if(event.getSource() == EBTN){
-            currentOperandText += Math.E;
-            currentOperand.setText(currentOperandText);
+    }
+    @FXML
+    protected void operandButton(ActionEvent event){
+        if(!disableOperands){
+
+            if(event.getSource() == one){
+                currentOperandText += "1";
+                currentOperand.setText(currentOperandText);
+            }
+            else if (event.getSource() == two){
+                currentOperandText +="2";
+                currentOperand.setText(currentOperandText);
+            }
+            else if (event.getSource() == three){
+                currentOperandText +="3";
+                currentOperand.setText(currentOperandText);
+            }
+            else if (event.getSource() == four){
+                currentOperandText +="4";
+                currentOperand.setText(currentOperandText);
+            }
+            else if (event.getSource() == five){
+                currentOperandText +="5";
+                currentOperand.setText(currentOperandText);
+            }
+            else if (event.getSource() == six){
+                currentOperandText +="6";
+                currentOperand.setText(currentOperandText);
+            }
+            else if (event.getSource() == seven){
+                currentOperandText +="7";
+                currentOperand.setText(currentOperandText);
+            }
+            else if (event.getSource() == eight){
+                currentOperandText +="8";
+                currentOperand.setText(currentOperandText);
+            }
+            else if (event.getSource() == nine){
+                currentOperandText +="9";
+                currentOperand.setText(currentOperandText);
+            }
+            else if(event.getSource() == zero){
+                currentOperandText +="0";
+                currentOperand.setText(currentOperandText);
+            }
+            else if(event.getSource() == point){
+                if(isPointEmpty){
+                    currentOperandText +=".";
+                    currentOperand.setText(currentOperandText);
+                    isPointEmpty = !isPointEmpty;
+                }
+            }
+            else if(event.getSource() == PI){
+                if(currentOperandText.length()==0){
+                    currentOperandText += Math.PI;
+                    currentOperand.setText(currentOperandText);
+                }
+                if(disableOperator && !isSummation){
+                    currentOperandText += Math.PI;
+                    currentOperand.setText(currentOperandText);
+                }
+            }
+            else if(event.getSource() == EBTN){
+                if(currentOperandText.length()==0){
+                    currentOperandText += Math.E;
+                    currentOperand.setText(currentOperandText);
+                }
+                if(disableOperator && !isSummation){
+                    currentOperandText += Math.E;
+                    currentOperand.setText(currentOperandText);
+                }
+            }
         }
     }
     @FXML
@@ -160,6 +209,9 @@ public class CalculatorController {
             Function ="";
             disableOperator = false;
             isPointEmpty = true;
+            isSummation = false;
+            base = 0;
+            limit = 0;
         }
         else if(event.getSource() == DEL){
             if(!currentOperandText.equals("")) {
@@ -174,9 +226,13 @@ public class CalculatorController {
             if(currentOperandText.length()<1){
                 currentOperandText ="";
                 currentOperand.setText(currentOperandText);
+                prevOperand.setText("");
                 Function ="";
                 disableOperator = false;
                 isPointEmpty = true;
+                isSummation = false;
+                base = 0;
+                limit = 0;
             }
         }
 
@@ -204,6 +260,7 @@ public class CalculatorController {
                     currentOperand.setText(currentOperandText);
                     operand2 = 2;
                     disableOperator = !disableOperator;
+                    disableOperands = !disableOperands;
                     Function = "SQR";
                 }
             }
@@ -362,20 +419,22 @@ public class CalculatorController {
                 }
             }
             else if(event.getSource() == POW){
-                if(operator.equals("")){
-                    operand1 = Float.parseFloat(currentOperandText);
-                    currentOperandText += "^";
-                    prevOperand.setText(currentOperandText);
-                    currentOperandText = "";
-                    currentOperand.setText(currentOperandText);
-                    operator = "^";
-                    if(!isPointEmpty){
-                        isPointEmpty = true;
-                    }
-                }else{
-                    operator ="^";
-                    prevOperand.setText((prevOperand.getText().substring(0, prevOperand.getText().length()-1))+operator);
+                if(!currentOperandText.equals("")){
+                    if(operator.equals("")){
+                        operand1 = Float.parseFloat(currentOperandText);
+                        currentOperandText += "^";
+                        prevOperand.setText(currentOperandText);
+                        currentOperandText = "";
+                        currentOperand.setText(currentOperandText);
+                        operator = "^";
+                        if(!isPointEmpty){
+                            isPointEmpty = true;
+                        }
+                    }else{
+                        operator ="^";
+                        prevOperand.setText((prevOperand.getText().substring(0, prevOperand.getText().length()-1))+operator);
 
+                    }
                 }
             }
         }
@@ -505,6 +564,7 @@ public class CalculatorController {
                     currentOperand.setText(currentOperandText);
                     Function = "";
                     disableOperator = !disableOperator;
+                    disableOperands = !disableOperands;
                 }
                 else if(Function.equalsIgnoreCase("SQRT")){
                     float num1 = Float.parseFloat(currentOperandText.substring(1));
@@ -578,7 +638,59 @@ public class CalculatorController {
                     Function = "";
                     disableOperator = !disableOperator;
                 }
+                else if(Function.equalsIgnoreCase("SUMMATION")){
+                    if(!currentOperandText.equalsIgnoreCase("base = ") && currentOperandText.contains("base")){
+                        base = Integer.parseInt(currentOperandText.substring(7));
+                        currentOperandText = "limit = ";
+                        currentOperand.setText(currentOperandText);
+                        prevOperand.setText("Σ("+base+", limit)");
+                    }
+                    if(!currentOperandText.equalsIgnoreCase("limit = ")){
+                        limit = Integer.parseInt(currentOperandText.substring(8));
+                        float sum = (float) summation(base, limit);
+                        currentOperandText = "";
+                        currentOperandText = Float.toString(sum);
+                        currentOperand.setText(currentOperandText);
+                        prevOperand.setText("");
+                        disableOperator = !disableOperator;
+                        Function = "";
+                    }
+
+                }
+                else if(Function.equalsIgnoreCase("BIGPI")){
+                    if(!currentOperandText.equalsIgnoreCase("base = ") && currentOperandText.contains("base")){
+                        base = Integer.parseInt(currentOperandText.substring(7));
+                        currentOperandText = "limit = ";
+                        currentOperand.setText(currentOperandText);
+                        prevOperand.setText("Π("+base+", limit)");
+                    }
+                    if(!currentOperandText.equalsIgnoreCase("limit = ")){
+                        limit = Integer.parseInt(currentOperandText.substring(8));
+                        float sum = (float) bigpi(base, limit);
+                        currentOperandText = "";
+                        currentOperandText = Float.toString(sum);
+                        currentOperand.setText(currentOperandText);
+                        prevOperand.setText("");
+                        disableOperator = !disableOperator;
+                        Function = "";
+                    }
+
+                }
             }
         }
+    }
+    protected int summation(int base, int limit){
+        int sum = 0;
+        for(int i = base; i <= limit; i++){
+            sum += i;
+        }
+        return sum;
+    }
+    protected int bigpi(int base, int limit){
+        int prod = 1;
+        for(int i = base; i<=limit; i++){
+            prod *= i;
+        }
+        return prod;
     }
 }

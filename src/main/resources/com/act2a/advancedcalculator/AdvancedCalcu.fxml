@@ -45,27 +45,27 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                   <Button fx:id="DEL" mnemonicParsing="false" onAction="#functButtons" prefHeight="74.0" prefWidth="105.0" text="DEL">
+                   <Button fx:id="DEL" styleClass="functG1" mnemonicParsing="false" onAction="#functButtons" prefHeight="74.0" prefWidth="105.0" text="DEL">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                   <Button fx:id="AC" mnemonicParsing="false" onAction="#functButtons" prefHeight="78.0" prefWidth="118.0" text="AC" GridPane.columnIndex="1">
+                   <Button fx:id="AC" styleClass="functG1" mnemonicParsing="false" onAction="#functButtons" prefHeight="78.0" prefWidth="118.0" text="AC" GridPane.columnIndex="1">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                   <Button fx:id="MODULO" mnemonicParsing="false" onAction="#operatorButtons" prefHeight="91.0" prefWidth="179.0" text="mod" GridPane.columnIndex="2">
+                   <Button fx:id="MODULO" styleClass="operators" mnemonicParsing="false" onAction="#operatorButtons" prefHeight="91.0" prefWidth="179.0" text="mod" GridPane.columnIndex="2">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                   <Button fx:id="ADD" mnemonicParsing="false" onAction="#operatorButtons" prefHeight="55.0" prefWidth="71.0" text="+" GridPane.columnIndex="3">
+                   <Button fx:id="ADD" styleClass="operators" mnemonicParsing="false" onAction="#operatorButtons" prefHeight="55.0" prefWidth="71.0" text="+" GridPane.columnIndex="3">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                   <Button fx:id="FLOOR" mnemonicParsing="false" onAction="#functButtons" prefHeight="66.0" prefWidth="90.0" text="FLR" GridPane.rowIndex="5">
+                   <Button fx:id="FLOOR" styleClass="functs" mnemonicParsing="false" onAction="#functButtons" prefHeight="66.0" prefWidth="90.0" text="FLR" GridPane.rowIndex="5">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                   <Button fx:id="CEIL" mnemonicParsing="false" onAction="#functButtons" prefHeight="66.0" prefWidth="72.0" text="CEIL" GridPane.rowIndex="6">
+                   <Button fx:id="CEIL" styleClass="functs" mnemonicParsing="false" onAction="#functButtons" prefHeight="66.0" prefWidth="72.0" text="CEIL" GridPane.rowIndex="6">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
@@ -81,15 +81,15 @@
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                   <Button fx:id="MINUS" mnemonicParsing="false" onAction="#operatorButtons" prefHeight="74.0" prefWidth="87.0" text="-" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                   <Button fx:id="MINUS" styleClass="operators" mnemonicParsing="false" onAction="#operatorButtons" prefHeight="74.0" prefWidth="87.0" text="-" GridPane.columnIndex="3" GridPane.rowIndex="1">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                   <Button fx:id="SQRT" mnemonicParsing="false" onAction="#functButtons" prefHeight="80.0" prefWidth="119.0" text="√" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                   <Button fx:id="SQRT" styleClass="functs" mnemonicParsing="false" onAction="#functButtons" prefHeight="80.0" prefWidth="119.0" text="√" GridPane.columnIndex="2" GridPane.rowIndex="5">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                   <Button fx:id="SQR" mnemonicParsing="false" onAction="#functButtons" prefHeight="69.0" prefWidth="73.0" text="x^2" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                   <Button fx:id="SQR" styleClass="functs" mnemonicParsing="false" onAction="#functButtons" prefHeight="69.0" prefWidth="73.0" text="x^2" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
@@ -105,15 +105,15 @@
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                   <Button fx:id="MULTIPLY" mnemonicParsing="false" onAction="#operatorButtons" prefHeight="82.0" prefWidth="92.0" text="*" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                   <Button fx:id="MULTIPLY" styleClass="operators" mnemonicParsing="false" onAction="#operatorButtons" prefHeight="82.0" prefWidth="92.0" text="*" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                   <Button fx:id="POW" mnemonicParsing="false" onAction="#operatorButtons" prefHeight="73.0" prefWidth="73.0" text="x^y" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                   <Button fx:id="POW" styleClass="functs" mnemonicParsing="false" onAction="#operatorButtons" prefHeight="73.0" prefWidth="73.0" text="x^y" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                   <Button fx:id="LOGX" mnemonicParsing="false" onAction="#functButtons" prefHeight="93.0" prefWidth="73.0" text="log(x)" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                   <Button fx:id="LOGX" styleClass="functs" mnemonicParsing="false" onAction="#functButtons" prefHeight="93.0" prefWidth="73.0" text="log(x)" GridPane.columnIndex="3" GridPane.rowIndex="5">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
@@ -129,15 +129,15 @@
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                   <Button fx:id="DIVIDE" mnemonicParsing="false" onAction="#operatorButtons" prefHeight="76.0" prefWidth="85.0" text="/" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                   <Button fx:id="DIVIDE" styleClass="operators" mnemonicParsing="false" onAction="#operatorButtons" prefHeight="76.0" prefWidth="85.0" text="/" GridPane.columnIndex="3" GridPane.rowIndex="3">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                   <Button fx:id="CBRT" mnemonicParsing="false" onAction="#functButtons" prefHeight="90.0" prefWidth="72.0" text="3√" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                   <Button fx:id="CBRT" styleClass="functs" mnemonicParsing="false" onAction="#functButtons" prefHeight="90.0" prefWidth="72.0" text="3√" GridPane.columnIndex="2" GridPane.rowIndex="6">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                   <Button fx:id="LOG2X" mnemonicParsing="false" onAction="#functButtons" prefHeight="92.0" prefWidth="72.0" text="log2(x)" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                   <Button fx:id="LOG2X" styleClass="functs" mnemonicParsing="false" onAction="#functButtons" prefHeight="92.0" prefWidth="72.0" text="log2(x)" GridPane.columnIndex="3" GridPane.rowIndex="6">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
@@ -149,22 +149,22 @@
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                   <Button fx:id="EQUALS" mnemonicParsing="false" onAction="#operatorButtons" prefHeight="47.0" prefWidth="318.0" text="=" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                   <Button fx:id="EQUALS"  styleClass="functG1" mnemonicParsing="false" onAction="#operatorButtons" prefHeight="47.0" prefWidth="318.0" text="=" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                   <Button fx:id="FACTORIAL" mnemonicParsing="false" onAction="#functButtons" prefHeight="63.0" prefWidth="72.0" text="N!" GridPane.rowIndex="7">
+                   <Button fx:id="FACTORIAL" styleClass="functs" mnemonicParsing="false" onAction="#functButtons" prefHeight="63.0" prefWidth="72.0" text="N!" GridPane.rowIndex="7">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="COS" mnemonicParsing="false" onAction="#functButtons" prefHeight="65.0" prefWidth="126.0" text="cos" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                  <Button fx:id="TAN" mnemonicParsing="false" onAction="#functButtons" prefHeight="102.0" prefWidth="176.0" text="tan" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                  <Button fx:id="SIN" mnemonicParsing="false" onAction="#functButtons" prefHeight="113.0" prefWidth="263.0" text="sin" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="109.0" text="Σ" GridPane.rowIndex="8" />
-                  <Button fx:id="PI" mnemonicParsing="false" onAction="#operandButton" prefHeight="126.0" prefWidth="211.0" text="π" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                  <Button fx:id="EBTN" mnemonicParsing="false" prefHeight="90.0" prefWidth="143.0" text="e" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="165.0" text="Π" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                  <Button fx:id="COS" styleClass="functs" mnemonicParsing="false" onAction="#functButtons" prefHeight="65.0" prefWidth="126.0" text="cos" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Button fx:id="TAN" styleClass="functs" mnemonicParsing="false" onAction="#functButtons" prefHeight="102.0" prefWidth="176.0" text="tan" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                  <Button fx:id="SIN" styleClass="functs" mnemonicParsing="false" onAction="#functButtons" prefHeight="113.0" prefWidth="263.0" text="sin" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                  <Button fx:id="SIGMA" styleClass="functs" mnemonicParsing="false" onAction="#bigFunctButtons" prefHeight="60.0" prefWidth="109.0" text="Σ" GridPane.rowIndex="8" />
+                  <Button fx:id="PI" styleClass="functs" mnemonicParsing="false" onAction="#operandButton" prefHeight="126.0" prefWidth="211.0" text="π" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <Button fx:id="EBTN" styleClass="functs" mnemonicParsing="false" onAction="#operandButton" prefHeight="90.0" prefWidth="143.0" text="e" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                  <Button fx:id="BIGPI" styleClass="functs" mnemonicParsing="false" onAction="#bigFunctButtons" prefHeight="97.0" prefWidth="165.0" text="Π" GridPane.columnIndex="3" GridPane.rowIndex="8" />
                </children>
            </GridPane>
        </children>
